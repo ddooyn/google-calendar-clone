@@ -11,7 +11,8 @@ function App() {
   
   return (
     <React.Fragment>
-      <div className="h-screen flex flex-columns">
+      {/* h-screen은 높이 꽉 차는 것 */}
+      <div className="h-screen flex flex-col">
         <CalendarHeader />
         <div className="flex flex-1">
           <Sidebar />

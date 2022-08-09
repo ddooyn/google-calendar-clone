@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './App.css';
 import { getMonth } from './util';
 import CalendarHeader from './components/CalendarHeader';
 import Sidebar from './components/Sidebar';
 import Month from './components/Month';
+import GlobalContext from './context/GlobalContext';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  console.table(getMonth());
-  
+  // console.table(getMonth());
+  const { monthIndex } = useContext(GlobalContext);
+
+  useEffect(() => {
+    // setCurrentMonth(monthIndex);
+    setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
+
   return (
     <React.Fragment>
       {/* h-screen은 높이 꽉 차는 것 */}

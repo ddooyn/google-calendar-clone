@@ -1,6 +1,8 @@
 import dayjs from 'dayjs';
 
 export const getMonth = (month = dayjs().month()) => { // 기본값 지금 달
+  // 🐛 small calendar 이동 후 큰 캘린더 Today 눌렀을 때 현재 달로 안 오는 버그 수정
+  month = Math.floor(month);
   const year = dayjs().year(); // 지금 연도
   const firstDayOfMonth = dayjs(new Date(year, month, 1)).day(); // 지금년월의 첫째날
   let currentMonthCount = 0 - firstDayOfMonth; // 음수 값은 지난 달 날짜로 취급

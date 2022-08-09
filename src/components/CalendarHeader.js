@@ -13,9 +13,13 @@ const CalendarHeader = () => {
     setMonthIndex((monthIndex) => monthIndex + 1);
   };
   const handleReset = () => {
-    setMonthIndex(dayjs().month());
-    // console.log(dayjs().month());
-    // console.log(dayjs().year, dayjs(new Date(dayjs().year(), 7)));
+    setMonthIndex(
+      monthIndex === dayjs().month()
+        ? monthIndex + Math.random()
+        : dayjs().month()
+    );
+    // SmallCalendar에서 global state인 monthIndex를 관찰중이므로
+    // Today를 눌렀을 때 현재 달과 같더라도 달라진 값을 전달해야 함
   };
 
   return (

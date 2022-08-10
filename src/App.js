@@ -8,7 +8,7 @@ import GlobalContext from './context/GlobalContext';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  // console.table(getMonth());
+  console.table(getMonth());
   const { monthIndex } = useContext(GlobalContext);
 
   useEffect(() => {

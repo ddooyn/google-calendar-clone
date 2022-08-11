@@ -4,15 +4,19 @@ import GlobalContext from '../context/GlobalContext';
 
 const Day = ({ day, rowIdx }) => {
   const [dayEvents, setDayEvents] = useState([]);
-  const { setDaySelected, setShowEventModal, savedEvents, setSelectedEvent } =
-    useContext(GlobalContext);
+  const {
+    setDaySelected,
+    setShowEventModal,
+    filteredEvents,
+    setSelectedEvent,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
-    const events = savedEvents.filter(
+    const events = filteredEvents.filter(
       (evt) => dayjs(evt.day).format('DD-MM-YY') === day.format('DD-MM-YY')
     );
     setDayEvents(events);
-  }, [savedEvents, day]); // 오늘의 일정을 dayEvents state로 가지기
+  }, [filteredEvents, day]); // 오늘의 일정을 dayEvents state로 가지기
 
   const getCurrentDayClass = () => {
     return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY') // 오늘 날짜면!
